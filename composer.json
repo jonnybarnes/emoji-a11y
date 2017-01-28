@@ -1,0 +1,29 @@
+{
+    "name": "jonnybarnes/emoji-a11y",
+    "description": "Make emoji more accessible",
+    "keywords": ["emoji", "a11y", "accessibility"],
+    "type": "library",
+    "license": "CC0-1.0",
+    "authors": [
+        {
+            "name": "Jonny Barnes",
+            "email": "jonny@jonnybarnes.uk"
+        }
+    ],
+    "require": {
+        "php": ">=7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~5.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Jonnybarnes\\EmojiA11y\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Jonnybarnes\\EmojiA11y\\Test\\": "tests/"
+        }
+    }
+}
