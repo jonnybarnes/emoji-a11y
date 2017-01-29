@@ -17,8 +17,10 @@ class EmojiModifierTest extends PHPUnit_Framework_TestCase
         $this->emoji = null;
     }
 
-    public function test_emoji_returns_same()
+    public function test_single_emoji()
     {
-        $this->assertEquals('Test', $this->emoji->makeEmojiAccessible('Test'));
+        $input = 'I’m 😀';
+        $excpected = 'I’m <span role="img" aria-label="grinning face">😀</span>';
+        $this->assertEquals($excpected, $this->emoji->makeEmojiAccessible($input));
     }
 }
