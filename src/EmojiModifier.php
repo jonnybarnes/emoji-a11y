@@ -2421,13 +2421,12 @@ class EmojiModifier
             array_keys($this->emoji),
             $this->emoji
         );
-        $replaced = preg_replace(
+
+        return preg_replace(
             $search,
             $replacements,
             $text
         );
-
-        return $replaced;
     }
 
     private function convertCodepoints($codepoints)
