@@ -2403,6 +2403,9 @@ class EmojiModifier
 
     public function makeEmojiAccessible($text)
     {
+        uksort($this->emoji, function ($a, $b) {
+            return strlen($b) - strlen($a);
+        });
         $search = array_map(
             function ($value) {
                 $parts = explode(' ', $value);
