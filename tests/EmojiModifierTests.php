@@ -34,7 +34,7 @@ class EmojiModifierTest extends PHPUnit_Framework_TestCase
     public function test_emoji_with_skintone()
     {
         $input = 'Inclusivity rocks. 👍🏻👍🏿';
-        $expected = 'I’m from <span role="img" aria-label="thumbs up: light skin tone">👍🏻</span><span role="img" aria-label="thumbs up: dark skin tone">👍🏿</span>';
+        $expected = 'Inclusivity rocks. <span role="img" aria-label="thumbs up: light skin tone">👍🏻</span><span role="img" aria-label="thumbs up: dark skin tone">👍🏿</span>';
         $this->assertEquals($expected, $this->emoji->makeEmojiAccessible($input));
     }
 }
