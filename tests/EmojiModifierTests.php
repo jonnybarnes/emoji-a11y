@@ -20,8 +20,8 @@ class EmojiModifierTest extends PHPUnit_Framework_TestCase
     public function test_smiley_emoji()
     {
         $input = 'I’m 😀';
-        $excpected = 'I’m <span role="img" aria-label="grinning face">😀</span>';
-        $this->assertEquals($excpected, $this->emoji->makeEmojiAccessible($input));
+        $expected = 'I’m <span role="img" aria-label="grinning face">😀</span>';
+        $this->assertEquals($expected, $this->emoji->makeEmojiAccessible($input));
     }
 
     public function test_flag_emoji()
@@ -35,6 +35,27 @@ class EmojiModifierTest extends PHPUnit_Framework_TestCase
     {
         $input = 'Inclusivity rocks. 👍🏻👍🏿';
         $expected = 'Inclusivity rocks. <span role="img" aria-label="thumbs up: light skin tone">👍🏻</span><span role="img" aria-label="thumbs up: dark skin tone">👍🏿</span>';
+        $this->assertEquals($expected, $this->emoji->makeEmojiAccessible($input));
+    }
+
+    public function test_job_plus_skintone_emoji()
+    {
+        $input = 'I want to be a 👨🏼‍🏫';
+        $expected = 'I want to be a <span role="img" aria-label="man teacher: medium-light skin tone">👨🏼‍🏫</span>';
+        $this->assertEquals($expected, $this->emoji->makeEmojiAccessible($input));
+    }
+
+    public function test_family_emoji()
+    {
+        $input = 'Love conquers all. 👩‍👩‍👧';
+        $expected = 'Love conquers all. <span role="img" aria-label="family: woman, woman, girl">👩‍👩‍👧</span>';
+        $this->assertEquals($expected, $this->emoji->makeEmojiAccessible($input));
+    }
+
+    public function test_keycap_emoji()
+    {
+        $input = 'What’s your #️⃣';
+        $expected = 'What’s your <span role="img" aria-label="keycap: #">#️⃣</span>';
         $this->assertEquals($expected, $this->emoji->makeEmojiAccessible($input));
     }
 }
