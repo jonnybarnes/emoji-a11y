@@ -58,4 +58,11 @@ class EmojiModifierTest extends PHPUnit_Framework_TestCase
         $expected = 'What’s your <span role="img" aria-label="keycap: #">#️⃣</span>';
         $this->assertEquals($expected, $this->emoji->makeEmojiAccessible($input));
     }
+
+    public function test_random_2016_emoji()
+    {
+        $input = 'My favourite fruit is a 🥝';
+        $expected = 'My favourite fruit is a <span role="img" aria-label="kiwi fruit">🥝</span>';
+        $this->assertEquals($expected, $this->emoji->makeEmojiAccessible($input));
+    }
 }
