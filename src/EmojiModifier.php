@@ -2528,7 +2528,7 @@ class EmojiModifier
         //this bit is mine, to return as U+XXXX...
         $return = '';
         foreach ($out as $num) {
-            $return .= 'U+' . dechex($num) . ' ';
+            $return .= 'U+' . str_pad(dechex($num), 4, '0', STR_PAD_LEFT) . ' ';
         }
         $return = strtoupper(rtrim($return));
 
