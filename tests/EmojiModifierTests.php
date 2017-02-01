@@ -17,6 +17,12 @@ class EmojiModifierTest extends PHPUnit_Framework_TestCase
         $this->emoji = null;
     }
 
+    public function test_no_emojis()
+    {
+        $input = 'No emojis here';
+        $this->assertEquals($input, $this->emoji->makeEmojiAccessible($input));
+    }
+
     public function test_smiley_emoji()
     {
         $input = 'I’m 😀';
