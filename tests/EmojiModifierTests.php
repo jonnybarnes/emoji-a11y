@@ -71,4 +71,13 @@ class EmojiModifierTest extends TestCase
         $expected = 'My favourite fruit is a <span role="img" aria-label="kiwi fruit">🥝</span>';
         $this->assertEquals($expected, $this->emoji->makeEmojiAccessible($input));
     }
+
+    public function test_different_output()
+    {
+        $emojiModifier = new EmojiModifier('<span alt="%s">%s</span>');
+        $input = 'I’m 😀';
+        $expected = 'I’m <span alt="grinning face">😀</span>';
+        $this->assertEquals($expected, $emojiModifier->makeEmojiAccessible($input));
+        unset($emojiModifier);
+    }
 }
