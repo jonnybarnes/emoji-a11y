@@ -2,10 +2,10 @@
 
 namespace Jonnybarnes\EmojiA11y\Test;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use Jonnybarnes\EmojiA11y\EmojiModifier;
 
-class EmojiModifierTest extends PHPUnit_Framework_TestCase
+class EmojiModifierTest extends TestCase
 {
     public function setUp()
     {
