@@ -80,4 +80,18 @@ class EmojiModifierTest extends TestCase
         $this->assertEquals($expected, $emojiModifier->makeEmojiAccessible($input));
         unset($emojiModifier);
     }
+
+    public function test_england_flag()
+    {
+        $input = 'I’m from 🏴󠁧󠁢󠁥󠁮󠁧󠁿';
+        $expected = 'I’m from <span role="img" aria-label="England">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span>';
+        $this->assertEquals($expected, $this->emoji->makeEmojiAccessible($input));
+    }
+
+    public function test_2017_emoji()
+    {
+        $input = '🤮 and 🦖';
+        $expected = '<span role="img" aria-label="face vomiting">🤮</span> and <span role="img" aria-label="T-Rex">🦖</span>';
+        $this->assertEquals($expected, $this->emoji->makeEmojiAccessible($input));
+    }
 }
