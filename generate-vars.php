@@ -39,7 +39,7 @@ foreach ($rows as $row) {
     if ($row->firstChild->nodeName == 'td') {
         $items = $row->childNodes;
         $emojiCode = $items->item(2)->nodeValue;
-        $emojiDescription = $items->item(32)->nodeValue;
+        $emojiDescription = $items->item(30)->nodeValue;
         $emoji[$emojiCode] = $emojiDescription;
     }
 }
@@ -69,7 +69,8 @@ $search = rtrim($search, '|') . '/u';
 echo 'The emoji array: ' . PHP_EOL;
 echo '[' . PHP_EOL;
 foreach ($emoji as $key => $value) {
-    echo "    '$key' => '$value'" . PHP_EOL;
+    $value = ltrim($value, '⊛ ');
+    echo "    '$key' => '$value'," . PHP_EOL;
 }
 echo ']' . PHP_EOL;
 echo 'The regular expression: ' . PHP_EOL;
