@@ -25,5 +25,8 @@
         "psr-4": {
             "Jonnybarnes\\EmojiA11y\\Test\\": "tests/"
         }
+    },
+    "scripts": {
+        "test": "phpunit"
     }
 }

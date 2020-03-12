@@ -1,0 +1,48 @@
+name: "Run unit tests"
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  test:
+    name: "Test"
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ['ubuntu-latest', 'windows-latest', 'macos-latest']
+        php: ['7.0', '7.1', '7.2', '7.3', '7.4', '8.0']
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup PHP ${{ matrix.php }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: json,mbstring
+
+      - name: Get user-level Composer cache
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - name: Setup Composer cache
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: composer-${{ runner.os }}-${{ matrix.php }}-${{ hashFiles('**/composer.json') }}
+          restore-keys: |
+            composer-${{ runner.os }}-${{ matrix.php }}-${{ env.cache-name }}-
+            composer-${{ runner.os }}-${{ matrix.php }}-
+            composer-${{ runner.os }}-
+
+      - name: Pretend to be PHP 7.4 on PHP 8.0
+        if: matrix.php == '8.0'
+        run: composer config platform.php 7.4.2
+
+      - name: Install composer dependencies
+        run: composer update --no-suggest --no-progress --no-interaction
+
+      - name: Run unit tests
+        run: composer run test
